@@ -1,5 +1,6 @@
 
 export interface IRepository {
+    html_url: any;
   repository: any;
   stars: ReactNode;
   name: ReactNode;
