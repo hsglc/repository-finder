@@ -1,14 +1,15 @@
 /** @format */
 import { useEffect } from "react";
 import { IRepository } from "../../types";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Thead from "./Thead";
 import Trow from "./Trow";
 import { fetchRepositories } from "../../store/repository-actions";
+import {useAppDispatch} from '../../hooks/types'
 
 
 const RepositoryTable = () => {
-  const dispatchRepositories = useDispatch();
+  const dispatchRepositories = useAppDispatch();
   const selectedLanguage = useSelector(
     (state: any) => state.repository.selectedLanguage
   );

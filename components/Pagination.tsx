@@ -1,9 +1,7 @@
-/** @format */
-
-import { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { fetchRepositories } from "../store/repository-actions";
+import {useAppDispatch} from '../hooks/types'
 
 interface IProps {
   itemsPerPage: number;
@@ -12,7 +10,7 @@ interface IProps {
 
 function Pagination({ itemsPerPage, items }: IProps) {
   // We start with an empty list of items.
-  const dispatchRepositories = useDispatch();
+  const dispatchRepositories = useAppDispatch();
   const search = useSelector((state: any) => state.repository.search);
   const selectedLanguage = useSelector(
     (state: any) => state.repository.selectedLanguage

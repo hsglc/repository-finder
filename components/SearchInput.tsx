@@ -1,11 +1,12 @@
 
-import { SyntheticEvent, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { SyntheticEvent } from 'react'
+import {  useSelector } from 'react-redux'
 import { fetchRepositories } from '../store/repository-actions'
 import { repositoryActions } from '../store/repository-slice'
+import {useAppDispatch}from '../hooks/types'
 
 const SearchInput = () => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const selectedLanguage = useSelector(
     (state: any) => state.repository.selectedLanguage
   );
