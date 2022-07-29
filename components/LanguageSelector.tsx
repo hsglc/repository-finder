@@ -6,7 +6,7 @@ const LanguageSelector = () => {
         <form className='flex items-center gap-1.5'>
             <Checkbox label="JavaScript" value="Javascript" />
             <Checkbox label="Scala" value="Scala" />
-            <Checkbox label="Go" value="Go" />
+            <Checkbox label="Go" value="go" />
         </form>
     )
 }

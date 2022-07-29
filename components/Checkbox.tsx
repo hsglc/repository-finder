@@ -18,7 +18,8 @@ const Checkbox = ({ label, value }: IProps) => {
         <div onChange={(e) => {
             const result = (e.target as HTMLInputElement).value;
             dispatch(repositoryActions.setSelectedLanguage(result))
-            dispatch(fetchRepositories(result, 1, search))
+            dispatch(repositoryActions.setSearch(""))
+            dispatch(fetchRepositories(selectedLanguage, 1, search))
             
         }} className="flex items-center" >
             <input checked={selectedLanguage === value}  id="default-radio-2" type="radio" value={value} name="default-radio" className="w-6 h-6 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500  focus:ring-2 " />

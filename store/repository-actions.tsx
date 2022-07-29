@@ -23,4 +23,5 @@ export const fetchRepositories = (lang: string = "Javascript", page: number = 1,
     })
     dispatch(repositoryActions.setRepoNumber(repositories?.total_count))
     dispatch(repositoryActions.setRepositories(extractedRepos))
+    dispatch(repositoryActions.setError(repositories?.message))
 }

@@ -7,6 +7,7 @@ interface IRepositoryState {
     selectedLanguage: string;
     search: string;
     page: number;
+    error: string;
 }
 
 const initialState: IRepositoryState = {
@@ -15,6 +16,7 @@ const initialState: IRepositoryState = {
     selectedLanguage: 'Javascript',
     search: '',
     repoNumber: 0,
+    error: ''
 };
 
 const repositorySlice = createSlice({
@@ -36,6 +38,9 @@ const repositorySlice = createSlice({
         },
         setRepoNumber: (state, action: PayloadAction<number>) => {
             state.repoNumber = action.payload;
+        },
+        setError: (state, action: PayloadAction<string>) => {
+            state.error = action.payload;
         }
     },
 });
