@@ -9,7 +9,7 @@ interface IProps {
 const Trow = ({ repository }: IProps) => {
   return (
     <tr className="text-center">
-      <td>{repository.id}</td>
+      <td className="font-bold">{repository.id}</td>
       <td>{repository.name}</td>
       <td className="truncate...">{repository.description?.substring(0, 100)}</td>
       <td>{repository.stars}</td>
