@@ -24,7 +24,7 @@
         @apply  h-4 relative
     }
     .searchInput {
-        @apply w-1/2 border border-gray-500 font-extralight rounded-full p-3 pl-14 outline-none transition-all duration-300 ease-in-out focus:w-full
+        @apply w-full md:w-1/2 border-[2px] border-gray-500 font-extralight rounded-full p-3 pl-14 outline-none transition-all duration-300 ease-in-out focus:border-blue-500 md:focus:w-full
     }
     .repCardTitle {
         @apply font-bold text-blue-700
