@@ -5,13 +5,14 @@ import {useAppDispatch} from '../hooks/types'
 
 interface IProps {
   itemsPerPage: number;
-  items: number;
+  
 }
 
-function Pagination({ itemsPerPage, items }: IProps) {
+function Pagination({ itemsPerPage }: IProps) {
   // We start with an empty list of items.
   const dispatchRepositories = useAppDispatch();
   const search = useSelector((state: any) => state.repository.search);
+  const repoNumber = useSelector((state: any) => state.repository.repoNumber);
   const selectedLanguage = useSelector(
     (state: any) => state.repository.selectedLanguage
   )
@@ -38,7 +39,7 @@ function Pagination({ itemsPerPage, items }: IProps) {
         onPageChange={handlePageClick}
         pageRangeDisplayed={3}
         // Only the first 1000 search results are available, so I limited the number of pages to 50."
-        pageCount={Math.ceil(items / itemsPerPage) < 50 ? Math.ceil(items / itemsPerPage) : 50}
+        pageCount={Math.ceil(repoNumber / itemsPerPage) < 50 ? Math.ceil(repoNumber / itemsPerPage) : 50}
         activeLinkClassName="active-pagination-button"
         pageLinkClassName="link-pagination-button"
       />
