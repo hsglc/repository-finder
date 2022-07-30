@@ -4,8 +4,16 @@ import SearchBox from '../components/SearchBox'
 import Header from '../components/Header'
 import RepositoryCard from '../components/RepositoryCard'
 import Head from 'next/head'
+import { useAppDispatch, useAppSelector } from '../hooks/types'
+import { fetchRepos } from '../store/repository-slice'
+import { useEffect } from 'react'
 
 const Home = () => {
+
+  const dispatch = useAppDispatch()
+  useEffect(() => {
+    dispatch(fetchRepos({ page: 1, selectedLang: 'Javascript', search: '' }))
+  }, [])
 
   return (
     <div className='flex flex-col'>
@@ -18,7 +26,7 @@ const Home = () => {
         <SearchBox />
         <Table />
         <RepositoryCard />
-        <Pagination itemsPerPage={5} />
+        <Pagination itemsPerPage={5}  />
       </main>
     </div>
 
@@ -26,4 +34,5 @@ const Home = () => {
 }
 
 export default Home
+
 
