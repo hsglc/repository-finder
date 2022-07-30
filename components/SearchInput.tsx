@@ -1,9 +1,9 @@
 
 import { SyntheticEvent } from 'react'
-import {  useSelector } from 'react-redux'
-import { fetchRepositories } from '../store/repository-actions'
-import { repositoryActions } from '../store/repository-slice'
-import {useAppDispatch}from '../hooks/types'
+import { useSelector } from 'react-redux'
+
+import { fetchRepos, repositoryActions } from '../store/repository-slice'
+import { useAppDispatch } from '../hooks/types'
 
 const SearchInput = () => {
   const dispatch = useAppDispatch()
@@ -16,7 +16,7 @@ const SearchInput = () => {
 
   const searchHandler = (e: SyntheticEvent) => {
     e.preventDefault()
-    dispatch(fetchRepositories(selectedLanguage, 1, search))
+    dispatch(fetchRepos({ page: 1, selectedLang: selectedLanguage, search }))
   }
 
   return (
