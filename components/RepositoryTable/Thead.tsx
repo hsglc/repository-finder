@@ -5,10 +5,10 @@ const Thead = () => {
 
   return (
     <thead>
-      <tr>
+      <tr className="bg-blue-400/10">
         {HEADS.map((head) => (
           <th
-            className={`text-blue-700 font-bold ${head === "Description" ? "w-[600px]" : "w-[120px]"}`}
+            className={`text-blue-700  font-bold ${head === "Description" ? "w-[600px]" : "w-[120px]"}`}
             key={head}>
             {head}
           </th>

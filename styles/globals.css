@@ -8,10 +8,10 @@
         @apply h-full
     }
     body {
-        @apply min-h-full  
+        @apply min-h-full  bg-gray-400/10
     }
-    td {
-        @apply border-b-2 border-gray-400/70
+    tr {
+        @apply border-b border-gray-400/20 last:border-0  even:bg-blue-400/10
     }
 
 }

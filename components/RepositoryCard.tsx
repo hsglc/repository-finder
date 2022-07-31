@@ -4,7 +4,7 @@ import CustomLink from "./CustomLink"
 const RepositoryCard = () => {
   const { repositories } = useStoreSlice()
   return (
-    <section className="block md:hidden mt-4">
+    <section className="block md:hidden mt-4 bg-blue-500/10">
       {repositories?.map((repository: any) => <div key={repository.id} className="border rounded-lg border-gray-400/50 p-2 mb-2 mx-1.5">
         <h1 className="font-bold"> <span className="repCardTitle">ID: </span> {repository.id}</h1>
         <p> <span className="repCardTitle">Owner: </span> {repository.name}</p>
