@@ -1,11 +1,11 @@
-import Checkbox from './Checkbox'
+import RadioButton from './RadioButton'
 
 const LanguageSelector = () => {
     return (
         <form className='flex items-center gap-1.5'>
-            <Checkbox label="JavaScript" value="Javascript" />
-            <Checkbox label="Scala" value="Scala" />
-            <Checkbox label="Go" value="go" />
+            <RadioButton label="JavaScript" value="Javascript" />
+            <RadioButton label="Scala" value="Scala" />
+            <RadioButton label="Go" value="go" />
         </form>
     )
 }
