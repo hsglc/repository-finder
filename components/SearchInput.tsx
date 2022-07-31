@@ -3,7 +3,7 @@ import { SyntheticEvent } from 'react'
 import { useSelector } from 'react-redux'
 
 import { fetchRepos, repositoryActions } from '../store/repository-slice'
-import { useAppDispatch } from '../hooks/types'
+import { useAppDispatch } from '../hooks/useStore'
 
 const SearchInput = () => {
   const dispatch = useAppDispatch()

@@ -1,8 +1,6 @@
-
-import { useSelector } from 'react-redux'
-
 import { repositoryActions, fetchRepos } from "../store/repository-slice";
-import { useAppDispatch } from '../hooks/types'
+import { useAppDispatch } from '../hooks/useStore'
+import useStoreSlice from '../hooks/useStoreSlice';
 
 interface IProps {
     label: string;
@@ -11,9 +9,7 @@ interface IProps {
 
 const Checkbox = ({ label, value }: IProps) => {
     const dispatch = useAppDispatch();
-    const selectedLanguage = useSelector((state: any) => state.repository.selectedLanguage);
-    const search = useSelector((state: any) => state.repository.search);
-    const page = useSelector((state: any) => state.repository.page);
+    const { selectedLanguage, page, search } = useStoreSlice();
 
     return (
         <div onChange={(e) => {
