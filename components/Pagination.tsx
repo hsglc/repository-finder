@@ -30,7 +30,7 @@ function Pagination({ itemsPerPage }: IProps) {
         nextClassName="prev-next-pagination-button"
         previousClassName="prev-next-pagination-button"
         onPageChange={handlePageClick}
-        pageRangeDisplayed={3}
+        pageRangeDisplayed={1}
         forcePage={resetPagination ? 0 : page - 1}
         // Only the first 1000 search results are available, so I limited the number of pages to 50."
         pageCount={Math.ceil(repoNumber / itemsPerPage) < 50 ? Math.ceil(repoNumber / itemsPerPage) : 50}

@@ -11,7 +11,7 @@
         @apply min-h-full  bg-gray-400/10
     }
     tr {
-        @apply border-b border-gray-400/20 last:border-0  even:bg-blue-400/10
+        @apply border-b border-gray-400/20 last:border-0  odd:bg-blue-400/10
     }
 
 }
@@ -37,15 +37,15 @@
     }
 
     .prev-next-pagination-button {
-        @apply flex justify-between gap-1.5 bg-gray-700/70 hover:bg-blue-500 text-white p-3 rounded-md
+        @apply flex justify-between gap-1.5 bg-gray-700/70 hover:bg-blue-500 text-white p-1.5 md:p-3 rounded-md
     }
 
     .active-pagination-button {
-        @apply bg-blue-500 text-white p-3 rounded-md
+        @apply bg-blue-500 text-white p-2 md:p-3 rounded-md
     }
 
     .link-pagination-button {
-        @apply hover:bg-blue-500 hover:text-white p-3 rounded-md
+        @apply hover:bg-blue-500 hover:text-white p-2 md:p-3 rounded-md
     }
    
 
