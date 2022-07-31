@@ -13,7 +13,7 @@ import useStoreSlice from '../hooks/useStoreSlice'
 const Home = () => {
 
   const dispatch = useAppDispatch()
-  const {page,selectedLanguage, search, error,loading} = useStoreSlice()
+  const { page, selectedLanguage, search, error, loading } = useStoreSlice()
 
 
   useEffect(() => {
@@ -28,14 +28,16 @@ const Home = () => {
       </Head>
       <Header />
       <main className='centered'>
-        {loading && !error  ? <Spinner message="Loading..." />
-          : <>
+        {loading && <Spinner message="Loading..." />}
+        {error && <Spinner message="You have reached the search limit. Please try again later!" />}
+        {!loading && !error && <>
+          <>
             <SearchBox />
             <Table />
             <RepositoryCard />
             <Pagination itemsPerPage={5} />
-          </>}
-        {error && <Spinner message="You have reached the search limit. Please try again later!" />}
+          </>
+        </>}
       </main>
     </div >
 

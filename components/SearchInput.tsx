@@ -1,22 +1,17 @@
 
 import { SyntheticEvent } from 'react'
-import { useSelector } from 'react-redux'
-
+import useStoreSlice from '../hooks/useStoreSlice'
 import { fetchRepos, repositoryActions } from '../store/repository-slice'
 import { useAppDispatch } from '../hooks/useStore'
 
 const SearchInput = () => {
   const dispatch = useAppDispatch()
-  const selectedLanguage = useSelector(
-    (state: any) => state.repository.selectedLanguage
-  );
-  const search = useSelector(
-    (state: any) => state.repository.search
-  )
+
+  const { search, selectedLanguage, page } = useStoreSlice()
 
   const searchHandler = (e: SyntheticEvent) => {
     e.preventDefault()
-    dispatch(fetchRepos({ page: 1, selectedLang: selectedLanguage, search }))
+    dispatch(fetchRepos({ page, selectedLang: selectedLanguage, search }))
   }
 
   return (
