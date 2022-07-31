@@ -1,5 +1,5 @@
 import ReactPaginate from "react-paginate";
-import { fetchRepos } from "../store/repository-slice";
+import { fetchRepos, repositoryActions } from "../store/repository-slice";
 import { useAppDispatch, useAppSelector } from '../hooks/types'
 
 interface IProps {
@@ -11,6 +11,7 @@ function Pagination({ itemsPerPage }: IProps) {
   const dispatchRepositories = useAppDispatch();
   const search = useAppSelector((state: any) => state.repository.search);
   const repoNumber = useAppSelector((state: any) => state.repository.repoNumber);
+  const page = useAppSelector((state: any) => state.repository.page);
   const resetPagination = useAppSelector((state: any) => state.repository.resetPagination)
   const selectedLanguage = useAppSelector(
     (state: any) => state.repository.selectedLanguage
@@ -19,6 +20,7 @@ function Pagination({ itemsPerPage }: IProps) {
   // Invoke when user click to request another page.
   const handlePageClick = (event: { selected: number; }) => {
     const newOffset = event.selected + 1;
+    dispatchRepositories(repositoryActions.setPage(newOffset));
     dispatchRepositories(fetchRepos({ page: newOffset, selectedLang: selectedLanguage, search }));
   };
 
@@ -35,7 +37,7 @@ function Pagination({ itemsPerPage }: IProps) {
         previousClassName="prev-next-pagination-button"
         onPageChange={handlePageClick}
         pageRangeDisplayed={3}
-        forcePage={resetPagination ? 0 : undefined}
+        forcePage={resetPagination ? 0 : page -1}
         // Only the first 1000 search results are available, so I limited the number of pages to 50."
         pageCount={Math.ceil(repoNumber / itemsPerPage) < 50 ? Math.ceil(repoNumber / itemsPerPage) : 50}
         activeLinkClassName="active-pagination-button"
