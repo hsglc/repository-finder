@@ -11,8 +11,12 @@ import { useEffect } from 'react'
 const Home = () => {
 
   const dispatch = useAppDispatch()
+  const page = useAppSelector(state => state.repository.page)
+  const selectedLanguage = useAppSelector(state => state.repository.selectedLanguage)
+  const search = useAppSelector(state => state.repository.search)
+
   useEffect(() => {
-    dispatch(fetchRepos({ page: 1, selectedLang: 'Javascript', search: '' }))
+    dispatch(fetchRepos({ page: page || 1, selectedLang: selectedLanguage || 'Javascript', search: search || '' }))
   }, [])
 
   return (
