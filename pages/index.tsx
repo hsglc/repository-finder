@@ -4,16 +4,17 @@ import SearchBox from '../components/SearchBox'
 import Header from '../components/Header'
 import RepositoryCard from '../components/RepositoryCard'
 import Head from 'next/head'
-import { useAppDispatch, useAppSelector } from '../hooks/types'
+import { useAppDispatch } from '../hooks/useStore'
 import { fetchRepos } from '../store/repository-slice'
 import { useEffect } from 'react'
+import Spinner from '../components/Spinner'
+import useStoreSlice from '../hooks/useStoreSlice'
 
 const Home = () => {
 
   const dispatch = useAppDispatch()
-  const page = useAppSelector(state => state.repository.page)
-  const selectedLanguage = useAppSelector(state => state.repository.selectedLanguage)
-  const search = useAppSelector(state => state.repository.search)
+  const {page,selectedLanguage, search, error,loading} = useStoreSlice()
+
 
   useEffect(() => {
     dispatch(fetchRepos({ page: page || 1, selectedLang: selectedLanguage || 'Javascript', search: search || '' }))
@@ -27,12 +28,16 @@ const Home = () => {
       </Head>
       <Header />
       <main className='centered'>
-        <SearchBox />
-        <Table />
-        <RepositoryCard />
-        <Pagination itemsPerPage={5}  />
+        {loading && !error  ? <Spinner message="Loading..." />
+          : <>
+            <SearchBox />
+            <Table />
+            <RepositoryCard />
+            <Pagination itemsPerPage={5} />
+          </>}
+        {error && <Spinner message="You have reached the search limit. Please try again later!" />}
       </main>
-    </div>
+    </div >
 
   )
 }
