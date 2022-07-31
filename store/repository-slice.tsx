@@ -10,6 +10,7 @@ interface IRepositoryState {
     page: number;
     error: string;
     resetPagination: boolean;
+    loading: boolean;
 }
 
 const initialState: IRepositoryState = {
@@ -19,7 +20,8 @@ const initialState: IRepositoryState = {
     search: '',
     repoNumber: 0,
     error: '',
-    resetPagination: false
+    resetPagination: false,
+    loading: false
 };
 
 export const fetchRepos = createAsyncThunk(
@@ -72,13 +74,16 @@ const repositorySlice = createSlice({
         }
     },
     extraReducers(builder) {
+        builder.addCase(fetchRepos.pending, (state, action) => {
+            state.loading = true;
+        }),
 
         builder.addCase(fetchRepos.fulfilled, (state, action) => {
             state.resetPagination = false;
             state.repositories = action.payload.items;
             state.repoNumber = action.payload.total_count;
             state.error = action.payload.error;
-
+            state.loading = false;
         })
 
 
