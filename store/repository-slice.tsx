@@ -87,4 +87,4 @@ const repositorySlice = createSlice({
 
 export const repositoryActions = repositorySlice.actions;
 
-export default repositorySlice;
+export default repositorySlice.reducer;
