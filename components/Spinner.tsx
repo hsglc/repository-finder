@@ -15,7 +15,7 @@ const Spinner = ({ message }: IProps) => {
                 width="96"
 
             />
-            <p className='text-blue-600 font-semibold text-2xl'>{message}</p>
+            <p className='text-blue-600 font-semibold text-2xl animate-bounce mt-3'>{message}</p>
         </div>
     )
 }
