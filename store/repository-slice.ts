@@ -46,10 +46,15 @@ export const fetchRepos = createAsyncThunk(
 )
 
 const repositorySlice = createSlice({
+    // Redux Toolkit allows us to write "mutating" logic in reducers. It
+    // doesn't actually mutate the state because it uses the immer library,
+    // which detects changes to a "draft state" and produces a brand new
+    // immutable state based off those changes
+    // That one root reducer function is responsible for handling all of the actions that are dispatched, and calculating what the entire new state result should be every time
     name: "repository",
     initialState,
     reducers: {
-        setRepositories: (state, action: PayloadAction<any[]>) => {
+        setRepositories: (state, action: PayloadAction<IRepository[]>) => {
             state.repositories = action.payload;
 
         },
@@ -78,13 +83,13 @@ const repositorySlice = createSlice({
             state.loading = true;
         }),
 
-        builder.addCase(fetchRepos.fulfilled, (state, action) => {
-            state.resetPagination = false;
-            state.repositories = action.payload.items;
-            state.repoNumber = action.payload.total_count;
-            state.error = action.payload.error;
-            state.loading = false;
-        })
+            builder.addCase(fetchRepos.fulfilled, (state, action) => {
+                state.resetPagination = false;
+                state.repositories = action.payload.items;
+                state.repoNumber = action.payload.total_count;
+                state.error = action.payload.error;
+                state.loading = false;
+            })
 
 
     },

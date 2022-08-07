@@ -15,7 +15,7 @@ const Home = () => {
   const dispatch = useAppDispatch()
   const { page, selectedLanguage, search, error, loading } = useStoreSlice()
 
-
+6
   useEffect(() => {
     dispatch(fetchRepos({ page: page || 1, selectedLang: selectedLanguage || 'Javascript', search: search || '' }))
   }, [])
