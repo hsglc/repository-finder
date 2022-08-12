@@ -7,11 +7,12 @@ import { useAppDispatch } from '../hooks/useStore'
 const SearchInput = () => {
   const dispatch = useAppDispatch()
 
-  const { search, selectedLanguage, page } = useStoreSlice()
+  const { search, selectedLanguage } = useStoreSlice()
 
   const searchHandler = (e: SyntheticEvent) => {
     e.preventDefault()
-    dispatch(fetchRepos({ page, selectedLang: selectedLanguage, search }))
+    dispatch(fetchRepos({ page: 1, selectedLang: selectedLanguage, search }))
+    dispatch(repositoryActions.setPage(1))
   }
 
   return (

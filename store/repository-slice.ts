@@ -68,8 +68,7 @@ const repositorySlice = createSlice({
         },
         setSearch: (state, action: PayloadAction<string>) => {
             state.search = action.payload;
-            state.resetPagination = state.search === action.payload;
-            // Reset the page to 1 when the search changes.
+            
         },
         setRepoNumber: (state, action: PayloadAction<number>) => {
             state.repoNumber = action.payload;
